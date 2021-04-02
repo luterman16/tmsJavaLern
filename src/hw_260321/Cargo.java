@@ -3,7 +3,6 @@ package hw_260321;
 public class Cargo extends Ground {
     private double loadCapacity;
 
-
     public Cargo(double loadCapacity, String bodyType, int countOfPassengers, int numberOfWeels, double fuelConsumption, int power, double maxSpeed, int mass, String mark) {
         this.loadCapacity = loadCapacity;
         this.numberOfWeels = numberOfWeels;
@@ -14,11 +13,11 @@ public class Cargo extends Ground {
         this.mark = mark;
     }
 
+    @Override
     public String status() {
-        double powerKV = power * 0.74;
-        return "Марка: " + mark + " Масса: " + mass + "кг, Максимальная скорость: " + maxSpeed + "км/ч, Мощность: "
-                + power + " лошадиных сил, грузоподъемность: " + loadCapacity + ", количество колес: " + numberOfWeels + ", расход топлива: "
-                + fuelConsumption + " литров/100км, мощность: " + powerKV + " Кв.";
+        String superStatus = super.status();
+        return superStatus + "грузоподъемность: " + loadCapacity + ", количество колес: " + numberOfWeels + ", расход топлива: "
+                + fuelConsumption + " литров/100км";
     };
 
     public void loadTruck (double cargo){

@@ -28,6 +28,7 @@ public class App {
         );
         //Выводим инфо, по вместимости
         cargo.loadTruck(4.9);
+        System.out.println(cargo.status());
 
         //Гражданский самолет
         Civil civil = new Civil(

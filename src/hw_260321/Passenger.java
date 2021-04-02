@@ -4,7 +4,6 @@ public class Passenger extends Ground {
     private String bodyType;
     private int countOfPassengers;
 
-
     public Passenger(String bodyType, int countOfPassengers, int numberOfWeels, double fuelConsumption, int power, double maxSpeed, int mass, String mark) {
         this.bodyType = bodyType; //ип кузова
         this.countOfPassengers = countOfPassengers; // коли-во пассажирова
@@ -16,23 +15,22 @@ public class Passenger extends Ground {
         this.mark = mark; // маррка
     }
 
-
+    @Override
     public String status() {
-        double powerKV = power * 0.74;
-        return "Марка: " + mark + " Масса: " + mass + "кг, Максимальная скорость: " + maxSpeed + "км/ч, Мощность: "
-                + power + " лошадиных сил, тип кузова: " + bodyType + ", количество пассажиров: "
+        String superStatus = super.status();
+        return superStatus + " тип кузова: " + bodyType + ", количество пассажиров: "
                 + countOfPassengers + ", количество колес: " + numberOfWeels + ", расход топлива: "
-                + fuelConsumption + " литров/100км, мощность: " + powerKV + " Кв.";
+                + fuelConsumption + " литров/100км ";
     };
 
     public void distanceAndFuelConsumption(double timeOfHours){
         double distance = maxSpeed * timeOfHours;
-        double fuelConsumptionResult = calcFuelConsumotion(distance);
+        double fuelConsumptionResult = calcFuelConsumption(distance);
 
         System.out.printf("За время %s ч, автомобиль %s, двигаясь с максимальной скоростью %s км/ч проедет %s к и израсходует %s литров топлива. \n", timeOfHours, mark, maxSpeed,distance, fuelConsumptionResult );
     };
 
-    private double calcFuelConsumotion (double distance){
+    private double calcFuelConsumption (double distance){
         return distance / 100 * fuelConsumption;
     }
 }

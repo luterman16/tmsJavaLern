@@ -16,12 +16,12 @@ public class Military extends Air {
         this.power = power;
     }
 
+    @Override
     public String status(){
-        double powerKV = power * 0.74;
-        return "Марка: " + mark + " Масса: " + mass + "кг, Максимальная скорость: " + maxSpeed + "км/ч, Мощность: "
-                + power + " лошадиных сил, Размах крыльев: " + wingspan + " метров, минимальная длина взлетно-посадочной полосы для взлета: "
+        String superStatus = super.status();
+        return superStatus + " Размах крыльев: " + wingspan + " метров, минимальная длина взлетно-посадочной полосы для взлета: "
                 + minAccelerationBand + " метров, наличие системы катапулдьтрования: " + isEjectionSystem + ", количество ракет на борту: "
-                + countOfMissiles + ", мощность: " + powerKV + " Кв.";
+                + countOfMissiles;
 
     };
 
